@@ -1,0 +1,216 @@
+<html>
+    <head>
+        <title>Sample</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        
+        <style>
+            body{
+                margin: 0;
+            }
+            #wrapper{
+                display:flex;
+            }
+            #box1{
+                background: ;
+                width:40%;
+                height: 45%;
+                border-style: solid;
+            }
+             #box3{
+                background: ;
+                width:40%;
+                height: 70%;
+                border-style: solid;
+            }
+            #box2{
+                background:;
+                width: 60%;
+                height: 120%;
+                border-style: solid;
+                
+            }
+            #box3{
+                position: absolute;
+                top:50%;
+                background:;
+
+               
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="box1">
+            <br><br>
+                
+
+
+
+                {% block content %}
+  <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    &nbsp
+    <button type="submit">Upload</button>
+  </form>
+
+
+{% endblock %}
+
+
+<br>
+    Part: <input type="radio" name="part" checked ="yes"/>
+    Product Line: <input type="radio" name="product line" /><br />
+
+
+
+            </div>
+            <div id="box2" style="text-align: center" >
+            <h3>Demand Classification</h3>
+            {% load static %} 
+            {% if para %}
+            <iframe src="{% static  'plot_file_summary.html' %}" height="300" width="300">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+    
+       <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+
+          Select Part No &nbsp 
+  <select id = "part_select">
+  {% for _ in range %}
+
+
+    <option value="1" href=" second/{{ forloop.counter }} ">Part NO {{ forloop.counter }}</option>
+    
+  
+
+  {% endfor %}
+  </select>
+  <br><br>
+
+</form>
+
+<script>
+document.getElementById('part_select').onchange = function() {
+    window.location.href = this.children[this.selectedIndex].getAttribute('href');
+}
+</script>
+
+    
+
+     
+
+It will take the part value and submit to next second.html file 
+
+{% endif %}
+
+
+                      </div>
+
+
+
+
+
+
+
+        </div>
+
+        <div id="box3">
+
+        <h3>File summary<br>
+        {% if para %}
+        
+        
+        date is a problem fix that need to write a custom filter for the conversion 
+        
+            <table style="width:50%"   align='center'  border='thick'>
+ 
+  
+  <tr>
+    <td>No of Records</td>
+   
+    <td>{{ return_dict.no_of_records }}</td>
+  </tr>
+  
+  <tr>
+ 
+    <td>&nbsp Bad Records</td>
+    <td>{{  return_dict.bad_records }}</td> 
+    
+  </tr>
+  <tr>
+    
+    <td>&nbsp &nbsp Negative Demand</td>
+    <td>{{  return_dict.negative  }}</td> 
+    
+  </tr>
+  <tr>
+    
+    <td>&nbsp &nbsp Unnamed Records</td>
+    <td>{{  return_dict.unnamed }}</td>  
+    <br>
+  </tr>
+  <tr>
+  <td colspan=3>&nbsp</td>
+  </tr>
+  <tr>
+    <td>Start Date</td>
+    <td>{{  return_dict.min_date|date:"U" }}</td> 
+    
+  </tr>
+
+
+  <tr>
+    <td>End Date</td>
+    <td>{{   return_dict.end_date|date:"U" }}</td> 
+    
+  </tr>
+
+  <tr>
+  <td colspan=3>&nbsp</td>
+  </tr>
+  <tr>
+    <td>No of Parts</td>
+    <td>{{  return_dict.no_of_parts  }}</td> 
+    
+    
+  </tr>
+  <tr>
+   
+    <td>&nbsp Smooth</td>
+    <td>{{   return_dict.smooth }}</td> 
+    
+  </tr>
+  <tr>
+    
+    <td>&nbsp Intermittent</td>
+    <td>{{   return_dict.intermittent  }}</td> 
+    
+  </tr>
+  <tr>
+    
+    <td>&nbsp Lumpy</td>
+    <td>{{   return_dict.lumpy }}</td> 
+  
+  </tr>
+  <tr>
+
+    <td>&nbsp Erratic</td>
+    <td>{{  return_dict.erratic  }}</td> 
+    
+  </tr>
+
+
+</table>
+{% endif %}
+</h3>  
+    
+        </div>
+    </body>
+</html>

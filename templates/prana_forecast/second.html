@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <title>Sample</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        
+        <style>
+            body{
+                margin: 0;
+		border-style: solid;
+            }
+            #wrapper{
+                display:flex;
+		 border-style: solid;
+            }
+            #box1{
+                background: ;
+                width:40%;
+                height: 140%;
+                border-style: solid;
+            }
+            
+                
+            }
+            #box2{
+                background:;
+                width: 60%;
+                height: 120%;
+                border-style: solid;
+                
+            }
+            #myDIV {
+    width: 100%;
+    height: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: white;
+    margin-top: 20px;
+    
+}
+
+#myDIV2 {
+    width: 100%;
+    height: 100%
+    padding: 50px 0;
+    text-align: center;
+    background-color: ;
+    margin-top: 20px;
+    
+}
+           
+
+               
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="box1" style="text-align: center"> 
+            
+              <button onclick="myFunction()">Part Summary</button>
+<button onclick="myFunction2()">Advance Forecasting</button>
+
+
+<div id="myDIV">
+ in this section best fit model description is given along with decription of the file
+
+ #### a table of the part_file description 
+
+         <table style="width:50%"   align='center'  border='thick'>
+ 
+  
+  <tr>
+    <td>Serial NO</td>
+   
+    <td>{{ return_part_dict.serial_no}} </td>
+  </tr>
+  
+  <tr>
+ 
+    <td>Part NO</td>
+    <td>{{ return_part_dict.part_no }}</td> 
+    
+  </tr>
+  <tr>
+    
+    <td>No of Records</td>
+    <td>{{ return_part_dict.no_of_records }}</td> 
+    
+  </tr>
+  <tr>
+    
+    <td>Zero %</td>
+    <td>{{ return_part_dict.zero }}</td>  
+    <br>
+  </tr>
+  <tr>
+  <td colspan=3>&nbsp</td>
+  </tr>
+  <tr>
+    <td>ADI</td>
+    <td>{{ return_part_dict.ADI }}</td> 
+    
+  </tr>
+
+
+  <tr>
+    <td>COV2</td>
+    <td>{{ return_part_dict.COV2 }}</td> 
+    
+  </tr>
+
+  <tr>
+  <td colspan=3>&nbsp</td>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td>{{ return_part_dict.type_of_part }}</td> 
+    
+    
+  </tr>
+  
+   
+   
+
+
+</table>
+
+
+
+
+<input type="button" name="Forecast" value="Forecast" onclick="showDiv()" />
+
+
+
+
+
+
+</div>
+<div id="myDIV2">
+ 
+ in this section advance forecasting coming soon
+ <form method='post' action = >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='submit'>
+</form>
+
+
+
+</div>
+
+
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    var y = document.getElementById("myDIV2");
+    var z = document.getElementById("box2");
+    x.style.display = "block";
+    y.style.display = "none"
+    
+}
+function myFunction2() {
+    var x = document.getElementById("myDIV");
+    var y = document.getElementById("myDIV2");
+    var z = document.getElementById("box2");
+    x.style.display = "none";
+    y.style.display = "block"
+    z.style.display = "none"
+   
+}
+function showDiv() {
+   document.getElementById('box2').style.display = "block";
+}
+
+
+
+</script>        
+        
+
+          
+
+
+
+                
+
+
+            </div>
+            <div id="box2"  style="display:none;" >
+            
+           <h3>Best Fit Model Prediction</h3>
+                      {% load static %} 
+            {% if 1 %}
+
+
+
+            <iframe src= "{% static 'best_fit_plot.html' %}"  height="600" width="600">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+{% endif %}
+                      <br>
+
+                   Description will be provided in legend    
+                   
+
+                      </div>
+
+
+
+
+
+        
+
+
+
+
+       
+    </body>
+</html>

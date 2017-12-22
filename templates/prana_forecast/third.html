@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>Sample</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        
+        <style>
+            body{
+                margin: 0;
+		border-style: solid;
+            }
+            #wrapper{
+                display:flex;
+		 border-style: solid;
+            }
+            #box1{
+                background: ;
+                width:40%;
+                height: 140%;
+                border-style: solid;
+            }
+            
+                
+            }
+            #box2{
+                background:;
+                width: 60%;
+                height: 120%;
+                border-style: solid;
+                
+            }
+            #myDIV {
+    width: 100%;
+    height: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: white;
+    margin-top: 20px;
+    
+}
+
+#myDIV2 {
+    width: 100%;
+    height: 100%
+    padding: 50px 0;
+    text-align: center;
+    background-color: ;
+    margin-top: 20px;
+    
+}
+           
+
+               
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="box1" style="text-align: center"> 
+            
+
+
+
+</div>
+<div id="myDIV2">
+ 
+ 
+
+                {% block content %}
+  <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    &nbsp
+    <button type="submit">Upload</button>
+  </form>
+
+
+{% endblock %}
+
+
+</div>
+
+
+
+
+
+            </div>
+            <div id="box2"  style="display:none;" >
+            
+           
+
+                      </div>
+
+
+
+
+
+        
+
+
+
+
+       
+    </body>
+</html>
